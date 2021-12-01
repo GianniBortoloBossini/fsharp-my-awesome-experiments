@@ -12,10 +12,8 @@ let isIncreased currentDepth =
     previousDepth <- currentDepth
     increased
 
-let count =
-    filePath 
-    |> readLines  
-    |> Seq.map(fun x -> if isIncreased(int(x)) = true then 1 else 0)
-    |> Seq.sum
-
-printfn  "%d" count
+filePath 
+|> readLines  
+|> Seq.map(fun x -> if isIncreased(int(x)) = true then 1 else 0)
+|> Seq.sum
+|> printfn "%d"

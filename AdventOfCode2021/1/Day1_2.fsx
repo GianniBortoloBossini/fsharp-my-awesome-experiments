@@ -13,12 +13,9 @@ let isIncreased currentDepthSlice =
     previousDepth <- int(currentDepth)
     increased
 
-let count =
-    filePath 
-    |> readLines  
-    |> Seq.windowed 3 
-    |> Seq.map(fun x -> if isIncreased(x) = true then 1 else 0)
-    |> Seq.sum
-
-
-printfn  "%d" count
+filePath 
+|> readLines  
+|> Seq.windowed 3 
+|> Seq.map(fun x -> if isIncreased(x) = true then 1 else 0)
+|> Seq.sum
+|> printfn "%d"
