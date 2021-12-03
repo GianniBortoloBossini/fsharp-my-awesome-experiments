@@ -24,7 +24,7 @@ let toDecimal (binary: seq<char>) =
         |> Seq.sum
     )
 
-let calculateIndices (gamma: seq<char>) =
+let calculateIndex (gamma: seq<char>) =
     let epsilon = Seq.map (fun x -> if x = '1' then '0' else '1') gamma
     let gammaResult = gamma |> toDecimal
     let epsilonResult = epsilon |> toDecimal
@@ -37,6 +37,6 @@ let result =
     |> transpose
     |> toSeq
     |> Seq.map(fun x -> if (x |> countFilteredBy (fun x -> x = '1')) > (x |> countFilteredBy (fun x -> x = '0')) then '1' else '0')
-    |> calculateIndices 
+    |> calculateIndex 
 
 printfn "%d" <| result
