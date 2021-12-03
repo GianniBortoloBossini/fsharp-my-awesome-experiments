@@ -44,10 +44,7 @@ let getRating rating =
             lines <- Array.filter (fun x -> x[index] = discriminator) lines
     lines[0] |> Seq.toArray |> toDecimal
 
-// Oxygen
 let oxigenRating = getRating OXIGEN
-
-// CO2
 let co2Rating = getRating CO2
 
 oxigenRating * co2Rating
