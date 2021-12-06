@@ -55,18 +55,17 @@ for m in moves do
             for i = m.Start.X to m.Stop.X do
                 field.[i, m.Start.Y] <- (field[i, m.Start.Y] + 1)    
     else
-        let mutable xpositions = Seq.empty
-        let mutable ypositions = Seq.empty
-
-        if m.Start.X >= m.Stop.X then 
-            xpositions <- seq {for x = m.Start.X downto m.Stop.X do yield x}
-        else 
-            xpositions <- seq {for x = m.Start.X to m.Stop.X do yield x}
-
-        if m.Start.Y >= m.Stop.Y then
-            ypositions <- seq {for y = m.Start.Y downto m.Stop.Y do yield y}
-        else
-            ypositions <- seq {for y = m.Start.Y to m.Stop.Y do yield y}
+        let xpositions = 
+            if m.Start.X >= m.Stop.X then 
+                seq {for x = m.Start.X downto m.Stop.X do yield x}
+            else 
+                seq {for x = m.Start.X to m.Stop.X do yield x}
+        
+        let ypositions =
+            if m.Start.Y >= m.Stop.Y then
+                seq {for y = m.Start.Y downto m.Stop.Y do yield y}
+            else
+                seq {for y = m.Start.Y to m.Stop.Y do yield y}
         
         diagonal (Seq.toArray ypositions).[0] (Seq.toArray ypositions).[1..] (Seq.toArray xpositions).[0] (Seq.toArray xpositions).[1..]
 
