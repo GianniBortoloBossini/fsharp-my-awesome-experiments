@@ -15,10 +15,6 @@ printfn "{%d}" <| max
 [ min .. max ]   
     |> Seq.map(fun x -> 
                 positions
-                |> Seq.map(fun p -> 
-                               let steps = Math.Abs(p - x)
-                               let cost = [1 .. steps] |> Seq.sum
-                               cost
-                           )
+                |> Seq.map(fun p -> [1 .. Math.Abs(p - x)] |> Seq.sum)
                 |> Seq.sum)
     |> Seq.min
